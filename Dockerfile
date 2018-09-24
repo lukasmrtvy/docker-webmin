@@ -12,6 +12,8 @@ COPY /scripts/config.exp /
 
 RUN chmod +x entrypoint.sh
 
+RUN /usr/bin/expect /config.exp
+
 VOLUME /etc/webmin/
 
 EXPOSE 10000
