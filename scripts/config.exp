@@ -1,13 +1,15 @@
 #!/usr/bin/expect
 set timeout -1
-spawn "/tmp/webmin/setup.sh"
+
+spawn "/opt/webmin/setup.sh"
 expect "Config file directory " {send "\r"}
 expect "Log file directory " {send "\r"}
 expect "Full path to perl (default /usr/bin/perl):" {send "\r"}
 expect "Web server port (default 10000):" {send "\r"}
-expect "Login name (default admin):" {send "$env(WEBMIN_USER)\r"}
-expect "Login password:" {send "$env(WEBMIN_PASS)\r"}
-expect "Password again:" {send "$env(WEBMIN_PASS)\r"}
-expect "Use SSL (y/n):" {send  "$env(USE_SSL)\r"}
+expect "Login name (default admin):" {send "\r"}
+expect "Login password:" {send "\r"}
+expect "Password again:" {send "\r"}
+expect "Use SSL (y/n):" {send  "\r"}
 expect "Start Webmin at boot time (y/n):" {send  "n\r"}
+
 expect eof
