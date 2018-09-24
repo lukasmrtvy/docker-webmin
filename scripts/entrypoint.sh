@@ -1,11 +1,15 @@
 #!/bin/bash
 
-echo "entrypoint"
-
-export WEBMIN_USER="${WEBMIN_USER:-admin}"
 export WEBMIN_PASS="${WEBMIN_PASS:-admin}"
-export USE_SSL="${USE_SSL:-y}"
+export DISABLE_SSL="${DISABLE_SSL:-false}"
 
-/usr/bin/expect /config.exp
+
+if [ "${USE_SSL,,}" = true ]; then
+    sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
+fi
+
+cat /etc/passwd
+
+echo admin:${WEBMIN_PASS} | chpasswd
 
 exec "$@"
