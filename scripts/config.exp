@@ -1,5 +1,5 @@
 #!/usr/bin/expect
-set timeout -1
+#set timeout -1
 
 spawn "/opt/webmin/setup.sh"
 expect "Config file directory " {send "\r"}
