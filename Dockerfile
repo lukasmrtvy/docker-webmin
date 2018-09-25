@@ -21,4 +21,5 @@ EXPOSE 10000
 
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["/usr/bin/perl","/opt/webmin/miniserv.pl","/etc/webmin/miniserv.conf"]
+#CMD ["/usr/bin/perl","/opt/webmin/miniserv.pl","/etc/webmin/miniserv.conf"]
+CMD ["/etc/webmin/start", "--nofork"]
