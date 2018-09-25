@@ -11,6 +11,8 @@ fi
 #sed -i 's/logfile=\/var\/webmin\/miniserv.log/logfile=\/dev\/stdout/g' /etc/webmin/miniserv.conf
 #sed -i 's/errorlog=\/var\/webmin\/miniserv.error/errorlog=\/dev\/stderr/g' /etc/webmin/miniserv.conf
 
+
+#/usr/libexec/webmin/changepass.pl /etc/webmin admin foo
 echo root:${WEBMIN_PASS} | chpasswd
 
 exec "$@"
