@@ -5,6 +5,7 @@ export DISABLE_SSL="${DISABLE_SSL:-false}"
 
 
 if [ "${USE_SSL,,}" = true ]; then
+    echo "Disabling SSL"
     sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
 fi
 
