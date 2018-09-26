@@ -27,7 +27,8 @@ RUN  /opt/webmin/setup.sh
 #RUN /usr/bin/expect /config.exp
 
 VOLUME /etc/webmin/
-VOLUME /etc/smb/
+VOLUME /etc/samba/
+VOLUME /var/lib/samba/
 
 EXPOSE 10000
 
