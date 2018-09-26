@@ -9,7 +9,6 @@ RUN apt update && apt install -y curl tar perl libnet-ssleay-perl libauthen-pam-
     ln -s /dev/stderr /var/webmin/miniserv.error
 
 COPY /scripts/entrypoint.sh /
-COPY /scripts/config.exp /
 COPY /scripts/supervisord.conf /
 
 RUN chmod +x entrypoint.sh
@@ -24,17 +23,17 @@ ENV atboot=false
 
 RUN  /opt/webmin/setup.sh
 
-#RUN /usr/bin/expect /config.exp
-
 VOLUME /etc/webmin/
 VOLUME /etc/samba/
 VOLUME /var/lib/samba/
 
 EXPOSE 10000
 
-ENTRYPOINT ["/entrypoint.sh"]
+EXPOSE 137/udp
+EXPOSE 138/udp
+EXPOSE 139
+EXPOSE 445
 
-#CMD ["/usr/bin/perl","/opt/webmin/miniserv.pl","/etc/webmin/miniserv.conf"]
-#CMD ["/etc/webmin/start", "--nofork"]
+ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["/usr/bin/supervisord","-c","/supervisord.conf"]
