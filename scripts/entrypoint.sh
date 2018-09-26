@@ -14,6 +14,10 @@ if [ "${USE_SSL,,}" = true ]; then
     sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
 fi
 
+#kfile=$config_dir/miniserv.pem
+#openssl req -newkey rsa:2048 -x509 -nodes -out $tempdir/cert -keyout $tempdir/key -days 1825 -sha256 >/dev/null 2>&1 
+#cat $tempdir/cert $tempdir/key >$kfile
+
 #sed -i 's/logfile=\/var\/webmin\/miniserv.log/logfile=\/dev\/stdout/g' /etc/webmin/miniserv.conf
 #sed -i 's/errorlog=\/var\/webmin\/miniserv.error/errorlog=\/dev\/stderr/g' /etc/webmin/miniserv.conf
 
