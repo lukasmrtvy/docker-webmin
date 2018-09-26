@@ -10,7 +10,8 @@ export SD_PASS="${SD_PASS:-admin}"
 
 
 
-if [ "${USE_SSL,,}" = true ] && [ -n "${BASE_URL+x}"]; then
+if [ "${USE_SSL,,}" = true ] && [ -n "${BASE_URL+x}" ]; then
+    echo "Generating SSL certificate"
     sed -i 's/ssl=/ssl=1/g' /etc/webmin/miniserv.conf
     tempdir=/tmp/
     openssl req -newkey rsa:2048 -x509 -nodes -out $tempdir/cert -keyout $tempdir/key -days 1825 -sha256 -subj 'CN=${BASE_URL}/C=COM'
@@ -26,6 +27,7 @@ fi
 #sed -i 's/errorlog=\/var\/webmin\/miniserv.error/errorlog=\/dev\/stderr/g' /etc/webmin/miniserv.conf
 
 if [ ! "${WEBMIN_PASS}" = "admin" ];then
+    echo "Changing password for admin"
     /opt/webmin/changepass.pl /etc/webmin admin ${WEBMIN_PASS}
 #echo root:${WEBMIN_PASS} | chpasswd
 fi
