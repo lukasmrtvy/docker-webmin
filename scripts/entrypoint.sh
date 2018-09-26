@@ -26,7 +26,7 @@ fi
 #    sed -e 's/"${i}"//' -i /etc/webmin/webmin.acl
 #do
 
-echo "admin: samba" >  /etc/webmin/webmin.acl
+echo "admin: samba system-status" >  /etc/webmin/webmin.acl
 
 
 
