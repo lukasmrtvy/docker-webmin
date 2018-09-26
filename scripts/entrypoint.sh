@@ -15,7 +15,7 @@ if [ "${USE_SSL,,}" = true ] && [ -n "${BASE_URL+x}" ]; then
     sed -i 's/ssl=/ssl=1/g' /etc/webmin/miniserv.conf
     tempdir=/tmp/certs
     mkdir $tempdir
-    openssl req -newkey rsa:2048 -x509 -nodes -out $tempdir/cert -keyout $tempdir/key -days 1825 -sha256 -subj 'CN=${BASE_URL}/C=COM'
+    openssl req -newkey rsa:2048 -x509 -nodes -out $tempdir/cert -keyout $tempdir/key -days 1825 -sha256 -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=${BASE_URL}" || exit 1
     cat $tempdir/cert $tempdir/key > /etc/webmin/miniserv.pem
     rm -rf $tempdir
 fi
