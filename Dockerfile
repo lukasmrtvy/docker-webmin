@@ -2,7 +2,7 @@ FROM ubuntu:bionic
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt update && apt install -y curl tar perl libnet-ssleay-perl libauthen-pam-perl expect tzdata supervisor && \
+RUN apt update && apt install -y curl tar perl libnet-ssleay-perl libauthen-pam-perl expect tzdata supervisor samba && \
     mkdir /opt/webmin && curl -sSL https://prdownloads.sourceforge.net/webadmin/webmin-1.890.tar.gz | tar xz -C /opt/webmin --strip-components=1 && \
     mkdir -p /var/webmin/ && \
     ln -s /dev/stdout /var/webmin/miniserv.log && \
@@ -14,7 +14,17 @@ COPY /scripts/supervisord.conf /
 
 RUN chmod +x entrypoint.sh
 
-RUN /usr/bin/expect /config.exp
+ENV nostart=true
+ENV nouninstall=true
+ENV noportcheck=true
+ENV ssl=true
+ENV login=admin
+ENV password=admin
+ENV atboot=false
+
+RUN  /opt/webmin/setup.sh
+
+#RUN /usr/bin/expect /config.exp
 
 VOLUME /etc/webmin/
 
