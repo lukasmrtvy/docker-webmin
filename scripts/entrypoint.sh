@@ -3,6 +3,11 @@
 export WEBMIN_PASS="${WEBMIN_PASS:-admin}"
 export DISABLE_SSL="${DISABLE_SSL:-false}"
 
+export SD_USER="${SD_USER:-admin}"
+export SD_PASS="${SD_PASS:-admin}"
+
+export 
+
 
 if [ "${USE_SSL,,}" = true ]; then
     echo "Disabling SSL"
