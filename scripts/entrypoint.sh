@@ -14,6 +14,7 @@ if [ "${USE_SSL,,}" = true ] && [ -n "${BASE_URL+x}" ]; then
     echo "Generating SSL certificate"
     sed -i 's/ssl=/ssl=1/g' /etc/webmin/miniserv.conf
     tempdir=/tmp/certs
+    mkdir $tempdir
     openssl req -newkey rsa:2048 -x509 -nodes -out $tempdir/cert -keyout $tempdir/key -days 1825 -sha256 -subj 'CN=${BASE_URL}/C=COM'
     cat $tempdir/cert $tempdir/key > /etc/webmin/miniserv.pem
     rm -rf $tempdir
