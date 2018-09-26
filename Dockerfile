@@ -17,7 +17,7 @@ RUN chmod +x entrypoint.sh
 ENV nostart=true
 ENV nouninstall=true
 ENV noportcheck=true
-ENV ssl=true
+ENV ssl=0
 ENV login=admin
 ENV password=admin
 ENV atboot=false
