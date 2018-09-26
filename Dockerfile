@@ -25,4 +25,4 @@ ENTRYPOINT ["/entrypoint.sh"]
 #CMD ["/usr/bin/perl","/opt/webmin/miniserv.pl","/etc/webmin/miniserv.conf"]
 #CMD ["/etc/webmin/start", "--nofork"]
 
-CMD ["/usr/bin/supervisord","-c","/config/supervisord.conf"]
+CMD ["/usr/bin/supervisord","-c","/supervisord.conf"]
