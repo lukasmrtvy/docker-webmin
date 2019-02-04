@@ -5,9 +5,6 @@ export USE_SSL="${USE_SSL:-true}"
 export BASE_URL="${BASE_URL:-localhost}"
 export DISABLE_OTHER_MODULES="${DISABLE_OTHER_MODULES:-true}"
 
-export SD_USER="${SD_USER:-admin}"
-export SD_PASS="${SD_PASS:-admin}"
-
 if [ "${USE_SSL,,}" = true ] && [ -n "${BASE_URL+x}" ]; then
     echo "Generating SSL certificate"
     sed -i 's/ssl=/ssl=1/g' /etc/webmin/miniserv.conf
