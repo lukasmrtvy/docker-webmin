@@ -20,6 +20,7 @@ ENV ssl=0
 ENV login=admin
 ENV password=admin
 ENV atboot=false
+ENV nochown=true
 
 RUN  /opt/webmin/setup.sh
 
