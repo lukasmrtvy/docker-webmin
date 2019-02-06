@@ -22,7 +22,8 @@ ENV password=admin
 ENV atboot=false
 ENV nochown=true
 
-RUN  /opt/webmin/setup.sh
+RUN  /opt/webmin/setup.sh && \
+     sed -i -e 's/^start_cmd=/start_cmd=supervisorctl start smbd nmbd/g' -e 's/^restart_cmd=/restart_cmd=supervisorctl restart smbd nmbd/g' -e 's/^stop_cmd=/stop_cmd=supervisorctl stop smbd nmbd/g' /etc/webmin/samba/config
 
 VOLUME /etc/webmin/
 VOLUME /etc/samba/
