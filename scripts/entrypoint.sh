@@ -16,7 +16,7 @@ if [ "${USE_SSL,,}" = true ] && [ -n "${BASE_URL+x}" ]; then
 fi
 
 if [ "${DISABLE_OTHER_MODULES,,}" = true ]; then
-    echo "admin: samba system-status" >  /etc/webmin/webmin.acl
+    echo "admin: samba system-status backup-config changeuser webminlog webmin acl mount" >  /etc/webmin/webmin.acl
 fi
 
 if [ ! "${WEBMIN_PASS}" = "admin" ];then
