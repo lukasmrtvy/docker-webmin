@@ -14,7 +14,7 @@ docker run  -d
   -p 445:445 
   -h webmin.example.com 
   --name webmin 
-  webmin:latest
+  lukasmrtvy/docker-webmin-samba:latest
 ```
 
 # Optional Variables
