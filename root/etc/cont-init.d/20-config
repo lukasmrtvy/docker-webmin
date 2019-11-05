@@ -1,0 +1,4 @@
+#!/usr/bin/with-contenv bash
+
+
+chown abc:abc -R /var/run/samba/ /var/log/samba/
